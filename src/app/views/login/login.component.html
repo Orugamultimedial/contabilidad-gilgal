@@ -1,0 +1,52 @@
+<div class="wrapper fadeInDown">
+  <div *ngIf="textError !== null" style="width:300px;border:1px solid red;padding:2%;border-radius:15px">
+
+    <button class="btn btn-outline-danger"
+            style="float:right"
+            (click)="textError=null">x</button>
+
+    <div style="width:100%;margin-top:5%">
+      <span style="color:red;text-align: center;padding-left:2%">{{textError}}</span>
+    </div>
+
+  </div>
+  <div id="formContent" *ngIf="textError === null">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQPrvDwVG49SBYvvDQI0IqEFnuPr-iMGT7UA&usqp=CAU"
+            id="icon"
+            alt="User Icon"
+            style="width: 50px;height:50px"/>
+    </div>
+
+    <!-- Login Form -->
+    <form>
+      <input  type="email"
+              id="login"
+              class="fadeIn second"
+              [(ngModel)]="user.user"
+              name="login"
+              placeholder="Ingrese su E-mail">
+
+      <input  type="text"
+              *ngIf="user.user !== null"
+              id="password"
+              class="fadeIn third"
+              [(ngModel)]="user.pass"
+              name="login"
+              placeholder="Ingrese su contraseña">
+
+      <button *ngIf="user.pass !== null"
+              class="btn btn-primary"
+              (click)="retrieveUsers()">Ingresar</button>
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter" *ngIf="user.pass !== null">
+      <a class="underlineHover" href="#">Olvidó su contraseña?</a>
+    </div>
+
+  </div>
+</div>

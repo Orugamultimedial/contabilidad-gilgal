@@ -1,0 +1,95 @@
+<div class="container">
+
+  <div class="card bg-light">
+  <article class="card-body mx-auto" style="max-width: 400px;">
+    <p class="divider-text">
+          <span class="bg-light">{{getTitle()}}</span>
+      </p>
+    <form>
+    <div class="form-group input-group">
+      <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+       </div>
+          <input [(ngModel)]="user.name" name="name" class="form-control" placeholder="Nombre Completo" type="text">
+      </div> <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+       </div>
+          <input  [(ngModel)]="user.email"
+                  name="email"
+                  class="form-control"
+                  placeholder="Email"
+                  type="email"
+                  (change)="analizeEmail(user.email)">
+          <span *ngIf="textError !== null" style="width:100%;padding-left:10%;color:red">{{textError}}</span>
+      </div> <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+      </div>
+
+      <select name="code" [(ngModel)]="user.code" class="custom-select" style="max-width: 120px;">
+        <option [value]="code" *ngFor="let code of internationalCode">{{code}}</option>
+      </select>
+
+        <input  [(ngModel)]="user.phone"
+                name="phone"
+                class="form-control"
+                placeholder="Teléfono"
+                type="number">
+      </div> <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+      </div>
+
+      <select name="function" [(ngModel)]="user.position" class="form-control">
+        <option [value]="position" *ngFor="let position of operators">{{position}}</option>
+      </select>
+
+    </div>
+
+    <div class="form-group input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+    </div>
+
+      <select name="branch" [(ngModel)]="user.branch" class="form-control">
+        <option [value]="branch" *ngFor="let branch of branchs">{{branch}}</option>
+      </select>
+
+  </div>
+
+
+    <!-- form-group end.// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+      </div>
+
+          <input  [(ngModel)]="user.pass"
+                  name="pass"
+                  class="form-control"
+                  placeholder="Crear contraseña"
+                  type="{{getTypePass()}}">
+
+      </div> <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+      </div>
+          <input class="form-control" placeholder="Repetir contraseña" type="{{getTypePass()}}">
+      </div> <!-- form-group// -->
+      <div class="form-group">
+          <button type="submit"
+                  class="btn btn-primary btn-block"
+                  (click)=registerNewUser()>
+                    {{getTitleButton()}}
+              </button>
+      </div> <!-- form-group// -->
+  </form>
+  </article>
+  </div> <!-- card.// -->
+
+  </div>

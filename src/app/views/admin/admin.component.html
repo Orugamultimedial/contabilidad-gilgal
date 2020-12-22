@@ -1,0 +1,71 @@
+<app-header></app-header>
+<div style="width:100%;display:inline-flex" *ngIf="registration === false">
+  <div style="width:18%;margin-right:1%">
+    <ul class="list-group">
+      <ng-container *ngFor="let branch of churchBranch">
+        <li class="list-group-item"
+            [ngClass]="select === branch ? 'active': ''"
+            (click)="select = branch">
+              {{branch}}
+          </li>
+      </ng-container>
+    </ul>
+  </div>
+  <div style="width: 80%;margin-right: 1%;" *ngIf="select === null">
+    <div style="width: 50%;margin-left:auto;margin-right: auto;;background:#0076B9;border-radius:5px;margin-top:3%">
+      <h5 style="color:white;text-align: center;padding:1%">Sede Oberá</h5>
+    </div>
+    <br>
+    <div style="background: #DBDBDB;border-radius:10px;padding:1%;box-sizing: content-box;">
+      <div style="display:inline-flex;width: 100%;">
+
+        <button class="btn btn-secondary"
+                [ngClass]="profile===false ? 'active':''"
+                style="width: 47.5%;margin-right: 5%;"
+                (click)="profile=false">Estadísticas</button>
+
+        <button class="btn btn-secondary"
+                [ngClass]="profile===true ? 'active':''"
+                style="width: 47.5%;"
+                (click)="profile=true">Administración</button>
+      </div>
+
+      <div *ngIf="profile === true" style="border-radius:10px;background-color: #FFFF;padding:3%;margin-top:2%">
+        <div style="text-align:center">¿Qué desea hacer?</div>
+        <div style="width:100%;text-align: center;padding:3%">
+          <button type="button" class="btn btn-outline-primary" (click)="registration=true;userEdit=user">Modificar mis datos</button>
+          <button type="button" class="btn btn-outline-success" (click)="registration=true;userEdit=null">Crear un usuario</button>
+          <button type="button" class="btn btn-outline-danger">Eliminar un usuario</button>
+        </div>
+      </div>
+      <div *ngIf="profile === false">
+        <br>
+        <div style="border-radius:10px;background-color: #FFFF;padding:3%;margin-top:2%;text-align: center;">
+          <h5 style="color:#727272;font-size: 16px;">DICIEMBRE 2020</h5>
+          <div style="display:inline-flex;text-align: center;">
+            <div class="btn btn-outline-success">DISPONIBLE<br>$12000</div>
+            <div class="btn btn-outline-primary">INGRESOS<br>$22000</div>
+            <div class="btn btn-outline-danger">EGRESOS<br>$10000</div>
+          </div>
+
+        </div>
+        <hr>
+        <br>
+        <app-graphics></app-graphics>
+        <hr>
+        <br>
+        <app-graphicstithesandofferings></app-graphicstithesandofferings>
+      </div>
+
+    </div>
+  </div>
+  <div style="width: 80%;margin-right: 1%;" *ngIf="select !== null">
+    <button class="btn btn-danger" style="float: right;margin-bottom:1%" (click)="select = null">x</button>
+    <app-cash-register [select]="select"></app-cash-register>
+  </div>
+</div>
+<div *ngIf="registration === true">
+  <button class="btn btn-danger" style="float:right" (click)="registration=false; userEdit=null">x</button>
+  <app-userresgistration [userEdit]="userEdit"></app-userresgistration>
+</div>
+<app-footer></app-footer>

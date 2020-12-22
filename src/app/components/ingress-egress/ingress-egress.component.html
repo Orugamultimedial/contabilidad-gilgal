@@ -1,0 +1,68 @@
+<div style="width: 90%;margin-left: auto;margin-right: auto;margin-top:5%">
+
+  <div style="text-align: center;"
+  [ngStyle]="{'color': this.motive === 'ingress' ? '#0076B9': '#dc3545'}">{{getMotive()}}</div>
+
+  <div *ngIf="motive === 'ingress'">
+
+    <form>
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+        <label class="form-check-label" for="exampleRadios1">
+          Diezmo
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+          Ofrenda
+        </label>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Nombre">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Apellido">
+        </div>
+      </div>
+      <br>
+
+      <div class="col">
+        <label class="sr-only" for="inlineFormInput">Importe</label>
+        <input type="number" class="form-control" id="inlineFormInput" placeholder="$0">
+      </div>
+      <br>
+
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary" style="float:float">Cargar</button>
+      </div>
+
+    </form>
+
+  </div>
+  <div *ngIf="motive === 'egress'">
+    <form>
+      <div class="col">
+        <label class="sr-only" for="inlineFormInput">Concepto</label>
+        <input type="text" class="form-control" id="inlineFormInput" placeholder="motivo del egreso">
+      </div>
+      <br>
+
+      <div class="col">
+        <label class="sr-only" for="inlineFormInput">Importe</label>
+        <input type="number" class="form-control" id="inlineFormInput" placeholder="$0">
+      </div>
+      <br>
+
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary" style="float:float">Cargar</button>
+      </div>
+    </form>
+  </div>
+
+</div>
+
